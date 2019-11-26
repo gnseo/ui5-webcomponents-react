@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Panel from '@ui5/webcomponents/dist/Panel';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {
@@ -15,7 +14,9 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
-const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(UI5Panel);
+const Panel: FC<PanelPropTypes> = withLazyWebComponent<PanelPropTypes>('Panel', () =>
+  import('@ui5/webcomponents/dist/Panel')
+);
 
 Panel.displayName = 'Panel';
 

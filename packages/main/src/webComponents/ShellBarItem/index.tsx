@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5ShellBarItem from '@ui5/webcomponents/dist/ShellBarItem';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   src?: string; // @generated
@@ -10,7 +9,9 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   onItemClick?: (event: Event) => void; // @generated
 }
 
-const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPropTypes>(UI5ShellBarItem);
+const ShellBarItem: FC<ShellBarItemPropTypes> = withLazyWebComponent<ShellBarItemPropTypes>('ShellBarItem', () =>
+  import('@ui5/webcomponents/dist/ShellBarItem')
+);
 
 ShellBarItem.displayName = 'ShellBarItem';
 

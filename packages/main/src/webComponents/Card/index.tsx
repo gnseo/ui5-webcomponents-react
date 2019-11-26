@@ -1,8 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Card from '@ui5/webcomponents/dist/Card';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   heading?: string; // @generated
@@ -14,7 +13,9 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[]; // @generated
 }
 
-const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(UI5Card);
+const Card: FC<CardPropTypes> = withLazyWebComponent<CardPropTypes>('Card', () =>
+  import('@ui5/webcomponents/dist/Card')
+);
 
 Card.displayName = 'Card';
 

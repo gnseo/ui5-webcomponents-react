@@ -1,13 +1,14 @@
-import UI5TableRow from '@ui5/webcomponents/dist/TableRow';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TableRowPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
-const TableRow: FC<TableRowPropTypes> = withWebComponent<TableRowPropTypes>(UI5TableRow);
+const TableRow: FC<TableRowPropTypes> = withLazyWebComponent<TableRowPropTypes>('TableRow', () =>
+  import('@ui5/webcomponents/dist/TableRow')
+);
 
 TableRow.displayName = 'TableRow';
 

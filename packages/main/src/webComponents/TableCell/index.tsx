@@ -1,13 +1,14 @@
-import UI5TableCell from '@ui5/webcomponents/dist/TableCell';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TableCellPropTypes extends WithWebComponentPropTypes {
   content?: ReactNode | ReactNode[];
 }
 
-const TableCell: FC<TableCellPropTypes> = withWebComponent<TableCellPropTypes>(UI5TableCell);
+const TableCell: FC<TableCellPropTypes> = withLazyWebComponent<TableCellPropTypes>('TableCell', () =>
+  import('@ui5/webcomponents/dist/TableCell')
+);
 
 TableCell.displayName = 'TableCell';
 

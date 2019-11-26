@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5List from '@ui5/webcomponents/dist/List';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 
@@ -20,7 +19,9 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
-const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(UI5List);
+const List: FC<ListPropTypes> = withLazyWebComponent<ListPropTypes>('List', () =>
+  import('@ui5/webcomponents/dist/List')
+);
 
 List.defaultProps = {
   headerText: '',

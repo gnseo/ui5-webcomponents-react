@@ -1,7 +1,6 @@
-import UI5Title from '@ui5/webcomponents/dist/Title';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 
 export interface TitlePropTypes extends WithWebComponentPropTypes {
@@ -10,7 +9,9 @@ export interface TitlePropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
-const Title: FC<TitlePropTypes> = withWebComponent<TitlePropTypes>(UI5Title);
+const Title: FC<TitlePropTypes> = withLazyWebComponent<TitlePropTypes>('Title', () =>
+  import('@ui5/webcomponents/dist/Title')
+);
 
 Title.displayName = 'Title';
 

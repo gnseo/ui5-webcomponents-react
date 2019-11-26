@@ -1,9 +1,8 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import '@ui5/webcomponents/dist/features/InputSuggestions';
-import UI5MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface MultiComboBoxPropTypes extends WithWebComponentPropTypes {
@@ -19,7 +18,9 @@ export interface MultiComboBoxPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode[]; // @generated
 }
 
-const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(UI5MultiComboBox);
+const MultiComboBox: FC<MultiComboBoxPropTypes> = withLazyWebComponent<MultiComboBoxPropTypes>('MultiComboBox', () =>
+  import('@ui5/webcomponents/dist/MultiComboBox')
+);
 
 MultiComboBox.displayName = 'MultiComboBox';
 

@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Link from '@ui5/webcomponents/dist/Link';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 
 export interface LinkPropTypes extends WithWebComponentPropTypes {
@@ -15,7 +14,9 @@ export interface LinkPropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
-const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(UI5Link);
+const Link: FC<LinkPropTypes> = withLazyWebComponent<LinkPropTypes>('Link', () =>
+  import('@ui5/webcomponents/dist/Link')
+);
 
 Link.displayName = 'Link';
 

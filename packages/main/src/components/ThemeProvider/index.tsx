@@ -1,16 +1,16 @@
-import boot from '@ui5/webcomponents-base/dist/boot';
-import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
-import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { isIE } from '@ui5/webcomponents-core/dist/sap/ui/Device';
 import { createGenerateClassName } from '@ui5/webcomponents-react-base/lib/createGenerateClassName';
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import { _ as fiori3Theme } from '@ui5/webcomponents/dist/assets/themes/sap_fiori_3/parameters-bundle.css.json';
 import { Jss } from 'jss';
-import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
+import React, { FC, Fragment, lazy, ReactNode, Suspense, useEffect, useState } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+
+const MessageToast = lazy(() =>
+  import('@ui5/webcomponents-react/lib/MessageToast').then(({ MessageToast }) => ({ default: MessageToast }))
+);
 
 export interface ThemeProviderProps {
   /*
@@ -31,24 +31,66 @@ export interface ThemeProviderProps {
   noInjectThemeProperties?: boolean;
 }
 
-const generateClassName = createGenerateClassName();
+const getThemingParametersForTheme = (theme) => {
+  switch (theme) {
+    case Themes.sap_fiori_3:
+      return sap_fiori_3;
+    default: {
+      return sap_fiori_3;
+    }
+  }
+};
 
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   const { withToastContainer, children, jss, noInjectThemeProperties } = props;
-  const theme = getTheme();
+
+  const [themeContext, setThemeContext] = useState({
+    theme: Themes.sap_fiori_3,
+    contentDensity: ContentDensity.Cozy,
+    parameters: sap_fiori_3
+  });
+
+  const [generateClassName, setGenerateClassName] = useState(() =>
+    typeof window !== 'undefined' ? createGenerateClassName() : undefined
+  );
+
+  useEffect(() => {
+    Promise.all([
+      import('@ui5/webcomponents-base/dist/config/CompactSize'),
+      import('@ui5/webcomponents-base/dist/config/Theme')
+    ]).then(([{ getCompactSize }, { getTheme }]) => {
+      const theme = getTheme();
+      const isCompactSize = getCompactSize();
+
+      if (theme !== Themes.sap_fiori_3 || isCompactSize) {
+        setThemeContext({
+          theme,
+          contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
+          parameters: getThemingParametersForTheme(theme)
+        });
+      }
+    });
+
+    if (generateClassName === undefined) {
+      setGenerateClassName(createGenerateClassName());
+    }
+  }, []);
 
   useEffect(() => {
     if (!noInjectThemeProperties) {
-      boot().then(() => {
+      Promise.all([
+        import('@ui5/webcomponents-base/dist/config/Theme'),
+        import('@ui5/webcomponents-base/dist/boot').then((mod) => mod.default())
+      ]).then(([{ getTheme }]) => {
         // only inject parameters for sap_fiori_3 and if they haven't been injected before
-        let styleElement = document.head.querySelector('style[data-ui5-webcomponents-react-theme-properties]');
-        if (theme === Themes.sap_fiori_3) {
+        let styleElement: HTMLStyleElement = document.head.querySelector(
+          'style[data-ui5-webcomponents-react-theme-properties]'
+        );
+        if (getTheme() === Themes.sap_fiori_3) {
           if (!styleElement) {
             styleElement = document.createElement('style');
-            // @ts-ignore
-            styleElement.type = 'text/css';
             styleElement.setAttribute('data-ui5-webcomponents-react-theme-properties', '');
-            document.head.appendChild(styleElement);
+            document.head.insertAdjacentElement('afterbegin', styleElement);
           }
 
           if (!styleElement.textContent) {
@@ -56,42 +98,28 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
           }
 
           const CSSVarsPonyfill = window['CSSVarsPonyfill'];
-          if (Device.browser.msie && CSSVarsPonyfill) {
+          if (isIE() && CSSVarsPonyfill) {
             setTimeout(() => {
               CSSVarsPonyfill.resetCssVars();
               CSSVarsPonyfill.cssVars();
             }, 0);
           }
-        } else {
-          if (styleElement) {
-            styleElement.textContent = '';
-          }
         }
       });
     }
-  }, [theme, noInjectThemeProperties]);
-
-  const isCompactSize = getCompactSize();
-
-  const parameters = useMemo(() => {
-    if (theme === Themes.sap_fiori_3) return sap_fiori_3;
-    return null;
-  }, [theme]);
-
-  const themeContext = useMemo(() => {
-    return {
-      theme,
-      contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
-      parameters
-    };
-  }, [theme, isCompactSize, parameters]);
+  }, [noInjectThemeProperties]);
 
   return (
     <JssProvider generateId={generateClassName} jss={jss}>
       <ReactJssThemeProvider theme={themeContext}>
         <Fragment>
           {children}
-          {withToastContainer && <MessageToast />}
+
+          {withToastContainer && (
+            <Suspense fallback={null}>
+              <MessageToast />
+            </Suspense>
+          )}
         </Fragment>
       </ReactJssThemeProvider>
     </JssProvider>

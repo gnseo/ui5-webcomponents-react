@@ -10,4 +10,5 @@ export interface Ui5WebComponentMetadata {
   metadata: {
     events: DynamicObjectList<Ui5Property>;
   };
+  getTag(): any;
 }

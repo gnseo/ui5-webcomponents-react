@@ -11,7 +11,15 @@ const bundles = [
     label: 'main',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'main',
-    externals: ['react', 'react-dom', 'react-jss', '@ui5/webcomponents-react', '@ui5/webcomponents-base', 'react-table']
+    externals: [
+      'react',
+      'react-dom',
+      'react-jss',
+      '@ui5/webcomponents-react',
+      '@ui5/webcomponents-base',
+      '@ui5/webcomponents-core',
+      'react-table'
+    ]
   },
   {
     label: 'base',

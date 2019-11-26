@@ -1,13 +1,14 @@
-import UI5Timeline from '@ui5/webcomponents/dist/Timeline';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TimelinePropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
-const Timeline: FC<TimelinePropTypes> = withWebComponent<TimelinePropTypes>(UI5Timeline);
+const Timeline: FC<TimelinePropTypes> = withLazyWebComponent<TimelinePropTypes>('Timeline', () =>
+  import('@ui5/webcomponents/dist/Timeline')
+);
 
 Timeline.displayName = 'Timeline';
 

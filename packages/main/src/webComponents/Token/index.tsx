@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Token from '@ui5/webcomponents/dist/Token';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TokenPropTypes extends WithWebComponentPropTypes {
   selected?: boolean; // @generated
@@ -12,7 +11,9 @@ export interface TokenPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNodeArray; // @generated
 }
 
-const Token: FC<TokenPropTypes> = withWebComponent<TokenPropTypes>(UI5Token);
+const Token: FC<TokenPropTypes> = withLazyWebComponent<TokenPropTypes>('Token', () =>
+  import('@ui5/webcomponents/dist/Token')
+);
 
 Token.displayName = 'Token';
 

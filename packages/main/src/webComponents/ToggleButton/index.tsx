@@ -1,9 +1,8 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5ToggleButton from '@ui5/webcomponents/dist/ToggleButton';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
 import React, { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
   design?: ButtonDesign; // @generated
@@ -16,7 +15,9 @@ export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
-const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(UI5ToggleButton);
+const ToggleButton: FC<ToggleButtonPropTypes> = withLazyWebComponent<ToggleButtonPropTypes>('ToggleButton', () =>
+  import('@ui5/webcomponents/dist/ToggleButton')
+);
 
 ToggleButton.displayName = 'ToggleButton';
 

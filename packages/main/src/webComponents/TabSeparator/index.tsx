@@ -1,11 +1,12 @@
-import UI5TabSeparator from '@ui5/webcomponents/dist/TabSeparator';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TabSeparatorPropTypes extends WithWebComponentPropTypes {}
 
-const TabSeparator: FC<TabSeparatorPropTypes> = withWebComponent<TabSeparatorPropTypes>(UI5TabSeparator);
+const TabSeparator: FC<TabSeparatorPropTypes> = withLazyWebComponent<TabSeparatorPropTypes>('TabSeparator', () =>
+  import('@ui5/webcomponents/dist/TabSeparator')
+);
 
 TabSeparator.displayName = 'TabSeparator';
 

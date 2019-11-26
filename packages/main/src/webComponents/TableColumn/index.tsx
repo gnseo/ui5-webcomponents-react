@@ -1,7 +1,6 @@
-import UI5TableColumn from '@ui5/webcomponents/dist/TableColumn';
 import React, { CSSProperties, FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   minWidth?: number; // @generated
@@ -10,7 +9,9 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode; // @generated
 }
 
-const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(UI5TableColumn);
+const TableColumn: FC<TableColumnPropTypes> = withLazyWebComponent<TableColumnPropTypes>('TableColumn', () =>
+  import('@ui5/webcomponents/dist/TableColumn')
+);
 
 TableColumn.displayName = 'TableColumn';
 

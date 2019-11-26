@@ -1,8 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5ShellBar from '@ui5/webcomponents/dist/ShellBar';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   logo?: string; // @generated
@@ -27,7 +26,9 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   icon?: ReactNode; // @generated
 }
 
-const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(UI5ShellBar);
+const ShellBar: FC<ShellBarPropTypes> = withLazyWebComponent<ShellBarPropTypes>('ShellBar', () =>
+  import('@ui5/webcomponents/dist/ShellBar')
+);
 
 ShellBar.displayName = 'ShellBar';
 

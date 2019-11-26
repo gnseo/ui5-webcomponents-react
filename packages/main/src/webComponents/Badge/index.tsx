@@ -1,7 +1,6 @@
-import UI5Badge from '@ui5/webcomponents/dist/Badge';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {
   colorScheme?: string; // @generated
@@ -9,7 +8,9 @@ export interface BadgePropTypes extends WithWebComponentPropTypes {
   icon?: any; // @generated
 }
 
-const Badge: FC<BadgePropTypes> = withWebComponent<BadgePropTypes>(UI5Badge);
+const Badge: FC<BadgePropTypes> = withLazyWebComponent<BadgePropTypes>('Badge', () =>
+  import('@ui5/webcomponents/dist/Badge')
+);
 
 Badge.displayName = 'Badge';
 

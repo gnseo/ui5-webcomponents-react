@@ -1,7 +1,6 @@
-import UI5Table from '@ui5/webcomponents/dist/Table';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {
   showNoData?: boolean; // @generated
@@ -11,7 +10,9 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
   columns?: ReactNode | ReactNode[];
 }
 
-const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(UI5Table);
+const Table: FC<TablePropTypes> = withLazyWebComponent<TablePropTypes>('Table', () =>
+  import('@ui5/webcomponents/dist/Table')
+);
 
 Table.displayName = 'Table';
 

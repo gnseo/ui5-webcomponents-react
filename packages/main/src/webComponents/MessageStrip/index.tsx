@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5MessageStrip from '@ui5/webcomponents/dist/MessageStrip';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
@@ -14,7 +13,9 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
-const MessageStrip: FC<MessageStripPropTypes> = withWebComponent<MessageStripPropTypes>(UI5MessageStrip);
+const MessageStrip: FC<MessageStripPropTypes> = withLazyWebComponent<MessageStripPropTypes>('MessageStrip', () =>
+  import('@ui5/webcomponents/dist/MessageStrip')
+);
 
 MessageStrip.displayName = 'MessageStrip';
 

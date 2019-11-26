@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Calendar from '@ui5/webcomponents/dist/Calendar';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 
 export interface CalendarPropTypes extends WithWebComponentPropTypes {
@@ -13,7 +12,9 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
   onSelectedDatesChange?: (event: Event) => void; // @generated
 }
 
-const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(UI5Calendar);
+const Calendar: FC<CalendarPropTypes> = withLazyWebComponent<CalendarPropTypes>('Calendar', () =>
+  import('@ui5/webcomponents/dist/Calendar')
+);
 
 Calendar.displayName = 'Calendar';
 

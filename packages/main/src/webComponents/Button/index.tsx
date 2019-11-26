@@ -1,9 +1,8 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Button from '@ui5/webcomponents/dist/Button';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
 import React, { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface ButtonPropTypes extends WithWebComponentPropTypes {
   design?: ButtonDesign; // @generated
@@ -15,7 +14,9 @@ export interface ButtonPropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
-const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(UI5Button);
+const Button: FC<ButtonPropTypes> = withLazyWebComponent<ButtonPropTypes>('Button', () =>
+  import('@ui5/webcomponents/dist/Button')
+);
 
 Button.displayName = 'Button';
 

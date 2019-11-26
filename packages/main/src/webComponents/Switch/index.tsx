@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Switch from '@ui5/webcomponents/dist/Switch';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface SwitchPropTypes extends WithWebComponentPropTypes {
   checked?: boolean; // @generated
@@ -13,7 +12,9 @@ export interface SwitchPropTypes extends WithWebComponentPropTypes {
   onChange?: (event: Event) => void; // @generated
 }
 
-const Switch: FC<SwitchPropTypes> = withWebComponent<SwitchPropTypes>(UI5Switch);
+const Switch: FC<SwitchPropTypes> = withLazyWebComponent<SwitchPropTypes>('Switch', () =>
+  import('@ui5/webcomponents/dist/Switch')
+);
 
 Switch.displayName = 'Switch';
 

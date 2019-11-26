@@ -1,7 +1,6 @@
-import UI5CustomListItem from '@ui5/webcomponents/dist/CustomListItem';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 
 export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
@@ -10,7 +9,10 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
-const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListItemPropTypes>(UI5CustomListItem);
+const CustomListItem: FC<CustomListItemPropTypes> = withLazyWebComponent<CustomListItemPropTypes>(
+  'CustomListItem',
+  () => import('@ui5/webcomponents/dist/CustomListItem')
+);
 
 CustomListItem.displayName = 'CustomListItem';
 

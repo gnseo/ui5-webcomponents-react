@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5CheckBox from '@ui5/webcomponents/dist/CheckBox';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
@@ -16,7 +15,9 @@ export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
   onChange?: (event: Event) => void; // @generated
 }
 
-const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(UI5CheckBox);
+const CheckBox: FC<CheckBoxPropTypes> = withLazyWebComponent<CheckBoxPropTypes>('CheckBox', () =>
+  import('@ui5/webcomponents/dist/CheckBox')
+);
 
 CheckBox.displayName = 'CheckBox';
 

@@ -1,7 +1,6 @@
-import UI5Label from '@ui5/webcomponents/dist/Label';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface LabelPropTypes extends WithWebComponentPropTypes {
   required?: boolean; // @generated
@@ -10,7 +9,9 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
-const Label: FC<LabelPropTypes> = withWebComponent<LabelPropTypes>(UI5Label);
+const Label: FC<LabelPropTypes> = withLazyWebComponent<LabelPropTypes>('Label', () =>
+  import('@ui5/webcomponents/dist/Label')
+);
 
 Label.displayName = 'Label';
 

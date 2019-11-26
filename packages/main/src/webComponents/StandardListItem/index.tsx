@@ -1,9 +1,8 @@
-import React, { FC, ReactNode } from 'react';
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import React, { FC, ReactNode } from 'react';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   selected?: boolean; // @generated
@@ -17,8 +16,9 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[] | string;
 }
 
-const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
-  UI5StandardListItem
+const StandardListItem: FC<StandardListItemPropTypes> = withLazyWebComponent<StandardListItemPropTypes>(
+  'StandardListItem',
+  () => import('@ui5/webcomponents/dist/StandardListItem')
 );
 
 StandardListItem.displayName = 'StandardListItem';

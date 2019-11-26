@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Input from '@ui5/webcomponents/dist/Input';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
@@ -23,7 +22,9 @@ export interface InputPropTypes extends WithWebComponentPropTypes {
   children?: string;
 }
 
-const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(UI5Input);
+const Input: FC<InputPropTypes> = withLazyWebComponent<InputPropTypes>('Input', () =>
+  import('@ui5/webcomponents/dist/Input')
+);
 
 Input.displayName = 'Input';
 

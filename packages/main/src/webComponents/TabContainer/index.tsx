@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5TabContainer from '@ui5/webcomponents/dist/TabContainer';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TabContainerPropTypes extends WithWebComponentPropTypes {
   fixed?: boolean;
@@ -12,7 +11,9 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
-const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPropTypes>(UI5TabContainer);
+const TabContainer: FC<TabContainerPropTypes> = withLazyWebComponent<TabContainerPropTypes>('TabContainer', () =>
+  import('@ui5/webcomponents/dist/TabContainer')
+);
 
 TabContainer.displayName = 'TabContainer';
 

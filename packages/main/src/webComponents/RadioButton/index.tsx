@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
@@ -26,7 +25,9 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
  *
  * This Storybook is currently only working in ContentDensity=Cozy.
  */
-const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(UI5RadioButton);
+const RadioButton: FC<RadioButtonPropTypes> = withLazyWebComponent<RadioButtonPropTypes>('RadioButton', () =>
+  import('@ui5/webcomponents/dist/RadioButton')
+);
 
 RadioButton.displayName = 'RadioButton';
 

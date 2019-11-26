@@ -1,8 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5TextArea from '@ui5/webcomponents/dist/TextArea';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 
 export interface TextAreaPropTypes extends WithWebComponentPropTypes {
   value?: string; // @generated
@@ -18,7 +17,9 @@ export interface TextAreaPropTypes extends WithWebComponentPropTypes {
   onChange?: (event: Event) => void; // @generated
 }
 
-const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(UI5TextArea);
+const TextArea: FC<TextAreaPropTypes> = withLazyWebComponent<TextAreaPropTypes>('TextArea', () =>
+  import('@ui5/webcomponents/dist/TextArea')
+);
 
 TextArea.displayName = 'TextArea';
 

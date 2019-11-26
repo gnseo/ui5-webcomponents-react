@@ -1,9 +1,8 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
 import React, { ReactNode, RefForwardingComponent, RefObject, useEffect, useRef } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withLazyWebComponent } from '@ui5/webcomponents-react/lib/withLazyWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withLazyWebComponent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 
@@ -22,7 +21,10 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   open?: boolean;
 }
 
-const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);
+const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withLazyWebComponent<DialogPropTypes>(
+  'Dialog',
+  () => import('@ui5/webcomponents/dist/Dialog')
+);
 
 const Dialog = React.forwardRef((props: DialogPropTypes, dialogRef: RefObject<Ui5DialogDomRef>) => {
   const localDialogRef = useConsolidatedRef<Ui5DialogDomRef>(dialogRef);
