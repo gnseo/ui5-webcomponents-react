@@ -2,34 +2,34 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   objectStatus: {
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: parameters.sapFontFamily,
+    fontSize: parameters.sapFontSize,
     fontWeight: 'normal',
     position: 'relative',
     display: 'flex'
   },
   iconSuccess: {
     '& ui5-icon': {
-      color: parameters.sapUiPositiveText
+      color: parameters.sapPositiveTextColor
     }
   },
   iconWarning: {
     '& ui5-icon': {
-      color: parameters.sapUiCriticalText
+      color: parameters.sapCriticalTextColor
     }
   },
   iconError: {
     '& ui5-icon': {
-      color: parameters.sapUiNegativeText
+      color: parameters.sapNegativeTextColor
     }
   },
   iconNone: {
     '& ui5-icon': {
-      color: parameters.sapUiNeutralText
+      color: parameters.sapNeutralTextColor
     }
   },
   iconInformation: {
-    color: parameters.sapUiInformativeElement
+    color: parameters.sapInformativeElementColor
   },
   icon: {
     marginRight: '0.5rem',
@@ -38,19 +38,19 @@ const styles = ({ parameters }: JSSTheme) => ({
     lineHeight: 'inherit'
   },
   textSuccess: {
-    color: parameters.sapUiPositiveText
+    color: parameters.sapPositiveTextColor
   },
   textError: {
-    color: parameters.sapUiNegativeText
+    color: parameters.sapNegativeTextColor
   },
   textWarning: {
-    color: parameters.sapUiCriticalText
+    color: parameters.sapCriticalTextColor
   },
   textInformation: {
-    color: parameters.sapUiInformativeText
+    color: parameters.sapInformativeTextColor
   },
   textNone: {
-    color: parameters.sapUiNeutralText
+    color: parameters.sapNeutralTextColor
   }
 });
 

@@ -13,8 +13,8 @@ const styles = ({ theme, parameters }: JSSTheme) => ({
   // outer flexbox
   avatar: {
     backgroundColor: parameters.sapAccentColor7,
-    color: parameters.sapUiContentContrastTextColor,
-    fontFamily: parameters.sapUiFontFamily,
+    color: parameters.sapContent_ContrastTextColor,
+    fontFamily: parameters.sapFontFamily,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

@@ -20,13 +20,13 @@ const coloredStyles = ({ parameters }: JSSTheme) => ({
     minHeight: '1.375rem'
   },
   Success: {
-    color: parameters.sapUiPositiveElement
+    color: parameters.sapPositiveElementColor
   },
   Error: {
-    color: parameters.sapUiNegativeElement
+    color: parameters.sapNegativeElementColor
   },
   Warning: {
-    color: parameters.sapUiCriticalElement
+    color: parameters.sapCriticalElementColor
   }
 });
 

@@ -19,48 +19,48 @@ const styles = ({ parameters }: JSSTheme) => ({
     position: 'relative'
   },
   th: {
-    backgroundColor: parameters.sapUiListHeaderBackground,
+    backgroundColor: parameters.sapList_HeaderBackground,
     height: '2.75rem',
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: parameters.sapFontFamily,
+    fontSize: parameters.sapFontSize,
     fontWeight: 'normal',
-    color: parameters.sapUiListHeaderTextColor,
-    borderTop: `1px solid ${parameters.sapUiListBorderColor}`,
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
-    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
+    color: parameters.sapList_HeaderTextColor,
+    borderTop: `1px solid ${parameters.sapList_BorderColor}`,
+    borderBottom: `1px solid ${parameters.sapList_BorderColor}`,
+    borderRight: `1px solid ${parameters.sapList_BorderColor}`,
     textAlign: 'start',
     boxSizing: 'border-box',
     '&:first-child': {
-      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+      borderLeft: `1px solid ${parameters.sapList_BorderColor}`
     }
   },
   tbody: {
     position: 'relative',
     zIndex: 0,
     overflowX: 'auto',
-    backgroundColor: parameters.sapUiListBackground
+    backgroundColor: parameters.sapList_Background
   },
   tr: {
     zIndex: 0,
-    backgroundColor: parameters.sapUiListBackground,
-    color: parameters.sapUiListTextColor,
+    backgroundColor: parameters.sapList_Background,
+    color: parameters.sapList_TextColor,
     '&[data-is-selected]': {
-      backgroundColor: parameters.sapUiListSelectionBackgroundColor
+      backgroundColor: parameters.sapList_SelectionBackgroundColor
     },
     '&[data-is-selected]:hover': {
-      backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
+      backgroundColor: `${parameters.sapList_Hover_SelectionBackground} !important`
     }
   },
   alternateRowColor: {
     '& $tr:nth-child(even)': {
-      backgroundColor: parameters.sapUiListHeaderBackground
+      backgroundColor: parameters.sapList_HeaderBackground
     }
   },
   tableGroupHeader: {
     '&$tr': {
-      backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
-      border: `1px solid ${parameters.sapUiListTableGroupHeaderBorderColor}`,
-      color: parameters.sapUiListTextColor,
+      backgroundColor: `${parameters.sapList_TableGroupHeaderBackground} !important`,
+      border: `1px solid ${parameters.sapList_TableGroupHeaderBorderColor}`,
+      color: parameters.sapList_TextColor,
       '& $tableCell': {
         borderRight: 'none'
       }
@@ -68,30 +68,30 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   selectable: {
     '& $tr:hover': {
-      backgroundColor: parameters.sapUiListHoverBackground,
+      backgroundColor: parameters.sapList_Hover_Background,
       cursor: 'pointer'
     },
     '& $tr:active:not([data-is-selected]):not($tableGroupHeader)': {
-      backgroundColor: parameters.sapUiListActiveBackground,
+      backgroundColor: parameters.sapList_Active_Background,
       '& $tableCell': {
-        borderRight: `1px solid ${parameters.sapUiListActiveBackground}`,
-        color: `${parameters.sapUiListActiveTextColor}`,
-        '--sapUiBaseText': parameters.sapUiListActiveTextColor
+        borderRight: `1px solid ${parameters.sapList_Active_Background}`,
+        color: `${parameters.sapList_Active_TextColor}`,
+        '--sapTextColor': parameters.sapList_Active_TextColor
       }
     }
   },
   tableCell: {
     height: '2.75rem',
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: parameters.sapFontFamily,
+    fontSize: parameters.sapFontSize,
     fontWeight: 'normal',
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
+    borderBottom: `1px solid ${parameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
-    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
+    borderRight: `1px solid ${parameters.sapList_BorderColor}`,
     display: 'flex',
     padding: '0 0.5rem',
     '&:first-child': {
-      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+      borderLeft: `1px solid ${parameters.sapList_BorderColor}`
     },
     overflow: 'hidden',
     position: 'relative',
@@ -104,14 +104,14 @@ const styles = ({ parameters }: JSSTheme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    backgroundColor: parameters.sapUiListBackground,
+    backgroundColor: parameters.sapList_Background,
     width: '100%',
     boxSizing: 'border-box',
-    color: parameters.sapUiListTextColor,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    color: parameters.sapList_TextColor,
+    fontFamily: parameters.sapFontFamily,
+    fontSize: parameters.sapFontSize,
     fontWeight: 'normal',
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`
+    borderBottom: `1px solid ${parameters.sapList_BorderColor}`
   },
   compactSize: {
     '&$tableContainer': {

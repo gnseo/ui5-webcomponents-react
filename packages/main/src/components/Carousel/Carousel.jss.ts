@@ -8,8 +8,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     border: '1px solid transparent',
     touchAction: 'pan-y',
     minWidth: '15.5rem',
-    fontFamily: parameters.sapUiFontFamily,
-    backgroundColor: parameters.sapUiBaseBG,
+    fontFamily: parameters.sapFontFamily,
+    backgroundColor: parameters.sapBackgroundColor,
     '&:focus': {
       outline: 'none',
       '&:before': {

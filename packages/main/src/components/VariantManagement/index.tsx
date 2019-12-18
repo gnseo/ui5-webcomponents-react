@@ -40,22 +40,22 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   VariantManagementText: {
     cursor: 'pointer',
-    color: parameters.sapUiButtonTextColor,
+    color: parameters.sapButton_TextColor,
     '&:hover': {
-      color: parameters.sapUiHighlight
+      color: parameters.sapHighlightTextColor
     },
     '&:active': {
-      color: parameters.sapUiHighlight
+      color: parameters.sapHighlightTextColor
     }
   },
   disabled: {
-    color: parameters.sapUiGroupTitleTextColor,
+    color: parameters.sapGroup_TitleTextColor,
     cursor: 'default',
     '&:hover': {
-      color: parameters.sapUiGroupTitleTextColor
+      color: parameters.sapGroup_TitleTextColor
     },
     '&:active': {
-      color: parameters.sapUiGroupTitleTextColor
+      color: parameters.sapGroup_TitleTextColor
     }
   },
   footer: {

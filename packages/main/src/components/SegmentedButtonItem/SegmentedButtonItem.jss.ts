@@ -3,7 +3,7 @@ import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
 const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   segmentedButtonItem: {
-    fontFamily: parameters.sapUiFontFamily,
+    fontFamily: parameters.sapFontFamily,
     listStyle: 'none',
     overflow: 'hidden',
     WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)',
@@ -16,7 +16,7 @@ const styles = ({ contentDensity, parameters }: JSSTheme) => ({
     display: 'inline-block',
     fontSize: '0.875rem',
     '&:focus': {
-      outline: `1px dotted ${parameters.sapUiContentFocusColor}`
+      outline: `1px dotted ${parameters.sapContent_FocusColor}`
     },
     height: contentDensity === ContentDensity.Compact ? '1.625rem' : '2.25rem',
     lineHeight: contentDensity === ContentDensity.Compact ? '1.5rem' : '2.25rem',
@@ -40,7 +40,7 @@ const styles = ({ contentDensity, parameters }: JSSTheme) => ({
     background: parameters.sapUiSegmentedButtonSelectedBackground,
     color: parameters.sapUiSegmentedButtonSelectedTextColor,
     borderColor: parameters.sapUiSegmentedButtonSelectedHoverBorderColor,
-    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentContrastIconColor,
+    '--sapContent_NonInteractiveIconColor': parameters.sapUiContentContrastIconColor,
     '$:active': {
       background: parameters.sapUiButtonActiveBackground,
       color: parameters.sapUiButtonActiveTextColor

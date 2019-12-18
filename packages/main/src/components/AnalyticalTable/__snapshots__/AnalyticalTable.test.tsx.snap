@@ -1429,8 +1429,8 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           >
             <stop
               offset="0%"
-              stop-color="var(--sapUiContentImagePlaceholderBackground)"
-              stop-opacity="var(--sapUiContentDisabledOpacity)"
+              stop-color="var(--sapContent_ImagePlaceholderBackground)"
+              stop-opacity="var(--sapContent_DisabledOpacity)"
             >
               <animate
                 attributeName="offset"
@@ -1442,7 +1442,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </stop>
             <stop
               offset="50%"
-              stop-color="var(--sapUiFieldPlaceholderTextColor)"
+              stop-color="var(--sapField_PlaceholderTextColor)"
               stop-opacity="1"
             >
               <animate
@@ -1455,8 +1455,8 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </stop>
             <stop
               offset="100%"
-              stop-color="var(--sapUiContentImagePlaceholderBackground)"
-              stop-opacity="var(--sapUiContentDisabledOpacity)"
+              stop-color="var(--sapContent_ImagePlaceholderBackground)"
+              stop-opacity="var(--sapContent_DisabledOpacity)"
             >
               <animate
                 attributeName="offset"

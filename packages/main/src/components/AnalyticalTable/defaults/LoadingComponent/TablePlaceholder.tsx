@@ -32,11 +32,11 @@ export const TablePlaceholder: FC<{ columns: number; rows: number; style: CSSPro
 
   const innerStyles = useMemo(() => {
     return {
-      backgroundColor: parameters.sapUiListBackground,
+      backgroundColor: parameters.sapList_Background,
       width: '100%',
       ...style
     };
-  }, [style, parameters.sapUiListBackground]);
+  }, [style, parameters.sapList_Background]);
 
   return (
     <ContentLoader
@@ -44,9 +44,9 @@ export const TablePlaceholder: FC<{ columns: number; rows: number; style: CSSPro
       height={height}
       width={width}
       speed={2}
-      primaryColor={parameters.sapUiContentImagePlaceholderBackground}
-      secondaryColor={parameters.sapUiFieldPlaceholderTextColor}
-      primaryOpacity={(parameters.sapUiContentDisabledOpacity as undefined) as number}
+      primaryColor={parameters.sapContent_ImagePlaceholderBackground}
+      secondaryColor={parameters.sapField_PlaceholderTextColor}
+      primaryOpacity={(parameters.sapContent_DisabledOpacity as undefined) as number}
     >
       {getArrayOfLength(rows).map((_, index) => (
         <TableRow key={index} columns={columns} y={rowHeight * index + rowHeight / 2} row={index} />

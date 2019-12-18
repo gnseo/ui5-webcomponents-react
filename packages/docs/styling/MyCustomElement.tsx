@@ -4,16 +4,16 @@ import { createUseStyles } from 'react-jss';
 
 const styles = ({ parameters }: JSSTheme) => ({
   container: {
-    backgroundColor: parameters.sapUiGlobalBackgroundColor,
-    fontFamily: parameters.sapUiFontFamily,
+    backgroundColor: parameters.sapBackgroundColor,
+    fontFamily: parameters.sapFontFamily,
     height: '50px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   },
   text: {
-    color: parameters.sapUiNegativeText,
-    fontSize: parameters.sapUiFontLargeSize
+    color: parameters.sapNegativeTextColor,
+    fontSize: parameters.sapFontLargeSize
   }
 });
 

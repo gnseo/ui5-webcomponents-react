@@ -10,8 +10,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     flexDirection: 'column',
     isolation: 'isolate',
     whiteSpace: 'normal',
-    fontFamily: parameters.sapUiFontFamily,
-    backgroundColor: parameters.sapUiBaseBG
+    fontFamily: parameters.sapFontFamily,
+    backgroundColor: parameters.sapBackgroundColor
   },
   contentContainer: {
     overflow: 'hidden auto',
@@ -28,8 +28,8 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   anchorBar: {
     paddingLeft: '2rem',
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    boxShadow: `inset 0 -0.0625rem ${parameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${parameters.sapUiObjectHeaderBorderColor}`,
+    backgroundColor: parameters.sapObjectHeader_Background,
+    boxShadow: `inset 0 -0.0625rem ${parameters.sapObjectHeader_BorderColor}, inset 0 0.0625rem ${parameters.sapObjectHeader_BorderColor}`,
     display: 'flex',
     height: '2.75rem',
     minHeight: '2.75rem'
@@ -47,7 +47,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     // overflowX: 'hidden',
     // overflowY: 'auto',
     overflow: 'hidden',
-    backgroundColor: parameters.sapUiBaseBG,
+    backgroundColor: parameters.sapBackgroundColor,
     '&:after': {
       clear: 'both',
       display: 'table',
@@ -55,7 +55,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   fillerDiv: {
-    backgroundColor: parameters.sapUiBaseBG
+    backgroundColor: parameters.sapBackgroundColor
   },
   outerScrollbar: {
     position: 'absolute',
@@ -63,7 +63,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     overflow: 'hidden',
     height: '100%',
     zIndex: ZIndex.ResponsivePopover,
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    backgroundColor: parameters.sapObjectHeader_Background,
     '& ::-webkit-scrollbar': {
       backgroundColor: '#ffffff'
     },
@@ -87,7 +87,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   header: {
     flexShrink: 0,
     position: 'relative',
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    backgroundColor: parameters.sapObjectHeader_Background,
     '&$stickied': {
       '& $image': {
         opacity: '1',
@@ -98,7 +98,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   contentHeader: {
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    backgroundColor: parameters.sapObjectHeader_Background,
     position: 'relative'
   },
   titleBar: {
@@ -122,7 +122,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     margin: '0',
     fontWeight: 'normal',
-    color: parameters.sapUiBaseText
+    color: parameters.sapTextColor
   },
   subTitle: {
     display: 'inline-block',
@@ -130,7 +130,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     verticalAlign: 'baseline',
     paddingTop: '0.5rem',
     fontSize: '0.875rem',
-    color: parameters.sapUiContentLabelColor
+    color: parameters.sapContent_LabelColor
   },
   actions: {
     position: 'absolute',

@@ -2,7 +2,7 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   formTitle: {
-    borderBottom: `1px solid ${parameters.sapUiGroupTitleBorderColor}`
+    borderBottom: `1px solid ${parameters.sapGroup_TitleBorderColor}`
   },
   formTitlePaddingBottom: {
     paddingBottom: '2em'

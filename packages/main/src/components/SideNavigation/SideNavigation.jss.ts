@@ -3,8 +3,8 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 export const sideNavigationStyles = ({ parameters }: JSSTheme) => ({
   sideNavigation: {
     height: '100%',
-    borderRight: `0.0625rem solid ${parameters.sapUiGroupContentBorderColor}`,
-    backgroundColor: parameters.sapUiListBackground,
+    borderRight: `0.0625rem solid ${parameters.sapGroup_ContentBorderColor}`,
+    backgroundColor: parameters.sapList_Background,
     display: 'flex',
     flexDirection: 'column',
     transition: 'width 500ms'
@@ -30,6 +30,6 @@ export const sideNavigationStyles = ({ parameters }: JSSTheme) => ({
   footerItemsSeparator: {
     margin: '0.25rem 0.875rem',
     height: '0.125rem',
-    backgroundColor: parameters.sapUiListBorderColor
+    backgroundColor: parameters.sapList_BorderColor
   }
 });

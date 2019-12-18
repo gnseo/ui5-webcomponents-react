@@ -4,7 +4,7 @@ import { useTheme } from 'react-jss';
 import { JSSTheme } from '../../../../interfaces/JSSTheme';
 
 const tableGroupExpandCollapseIcon = {
-  color: 'var(--sapUiContentIconColor)',
+  color: 'var(--sapContent_IconColor)',
   height: '0.75rem',
   width: '0.75rem',
   padding: '0.625rem',

@@ -3,10 +3,10 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 export const TextStyles = ({ parameters }: JSSTheme) => ({
   // Text Style
   text: {
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: parameters.sapFontFamily,
+    fontSize: parameters.sapFontSize,
     fontWeight: 'normal',
-    color: parameters.sapUiBaseText,
+    color: parameters.sapTextColor,
     display: 'inline-block',
     boxSizing: 'border-box',
     whiteSpace: 'pre-line',

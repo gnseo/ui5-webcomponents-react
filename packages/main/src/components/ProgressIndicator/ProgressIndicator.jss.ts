@@ -22,14 +22,14 @@ const styles = ({ parameters }: JSSTheme) => {
       WebkitFlexDirection: 'row',
       boxSizing: 'border-box',
       outline: 'none',
-      background: parameters.sapUiFieldBackground,
+      background: parameters.sapField_Background,
       width: '100%',
       height: '1.5rem',
       minWidth: '4rem',
       minHeight: '1rem',
       padding: '0',
       margin: '0.5rem 0',
-      border: `1px solid ${parameters.sapUiFieldBorderColor}`,
+      border: `1px solid ${parameters.sapField_BorderColor}`,
       borderRadius: '0.5rem',
       overflow: 'hidden'
     },
@@ -46,30 +46,30 @@ const styles = ({ parameters }: JSSTheme) => {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      fontFamily: parameters.sapUiFontFamily,
-      fontSize: parameters.sapMFontSmallSize,
+      fontFamily: parameters.sapFontFamily,
+      fontSize: parameters.sapFontSmallSize,
       fontWeight: 'normal'
     },
     progressBarTextColorLow: {
-      color: parameters.sapUiBaseText
+      color: parameters.sapTextColor
     },
     progressBarTextColorHigh: {
-      color: parameters.sapUiContentContrastTextColor
+      color: parameters.sapContent_ContrastTextColor
     },
     stateNone: {
-      backgroundColor: parameters.sapUiNeutralElement
+      backgroundColor: parameters.sapNeutralElementColor
     },
     stateSuccess: {
-      backgroundColor: parameters.sapUiPositiveElement
+      backgroundColor: parameters.sapPositiveElementColor
     },
     stateWarning: {
-      backgroundColor: parameters.sapUiCriticalElement
+      backgroundColor: parameters.sapCriticalElementColor
     },
     stateError: {
-      backgroundColor: parameters.sapUiNegativeElement
+      backgroundColor: parameters.sapNegativeElementColor
     },
     stateInformation: {
-      backgroundColor: parameters.sapUiInformativeElement
+      backgroundColor: parameters.sapInformativeElementColor
     }
   };
 };

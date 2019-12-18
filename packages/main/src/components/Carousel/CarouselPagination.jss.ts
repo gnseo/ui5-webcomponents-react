@@ -9,13 +9,13 @@ const styles = ({ parameters }: JSSTheme) => ({
     alignItems: 'center',
     height: '3.5rem',
     padding: '0 1rem',
-    backgroundColor: parameters.sapUiPageFooterBackground
+    backgroundColor: parameters.sapPageFooter_Background
   },
   paginationTop: {
-    borderBottom: `1px solid ${parameters.sapUiPageFooterBorderColor}`
+    borderBottom: `1px solid ${parameters.sapPageFooter_BorderColor}`
   },
   paginationBottom: {
-    borderTop: `1px solid ${parameters.sapUiPageFooterBorderColor}`
+    borderTop: `1px solid ${parameters.sapPageFooter_BorderColor}`
   },
   paginationIndicator: {
     padding: '0rem 1rem',
@@ -39,19 +39,19 @@ const styles = ({ parameters }: JSSTheme) => ({
     borderRadius: '50%',
     alignSelf: 'center',
     boxSizing: 'border-box',
-    backgroundColor: parameters.sapUiContentNonInteractiveIconColor
+    backgroundColor: parameters.sapContent_NonInteractiveIconColor
   },
   paginationIconActive: {
     margin: '0 0.25rem',
     width: '0.5rem',
     height: '0.5rem',
-    backgroundColor: parameters.sapUiSelected
+    backgroundColor: parameters.sapSelectedColor
   },
   paginationArrow: {
     boxShadow: 'none',
-    border: `1px solid ${parameters.sapUiButtonBorderColor}`,
-    backgroundColor: parameters.sapUiButtonBackground,
-    color: parameters.sapUiButtonBorderColor,
+    border: `1px solid ${parameters.sapButton_BorderColor}`,
+    backgroundColor: parameters.sapButton_Background,
+    color: parameters.sapButton_BorderColor,
     height: '2rem',
     width: '2rem',
     borderRadius: '50%',
@@ -60,9 +60,9 @@ const styles = ({ parameters }: JSSTheme) => ({
     alignItems: 'center',
     cursor: 'pointer',
     '&:active': {
-      border: `1px solid ${parameters.sapUiButtonEmphasizedActiveBorderColor}`,
-      backgroundColor: parameters.sapUiButtonEmphasizedActiveBackground,
-      color: parameters.sapUiButtonEmphasizedTextColor
+      border: `1px solid ${parameters.sapButton_Emphasized_Active_BorderColor}`,
+      backgroundColor: parameters.sapButton_Emphasized_Active_Background,
+      color: parameters.sapButton_Emphasized_TextColor
     }
   },
   '@global html[dir="rtl"] div[data-value="paginationArrow"] ui5-icon': {
@@ -70,7 +70,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   paginationArrowContent: {
     '& $paginationArrow': {
-      boxShadow: parameters.sapUiShadowLevel1,
+      boxShadow: parameters.sapContent_Shadow1,
       '&:first-child': {
         position: 'absolute',
         top: 'calc(50% - 2.75rem)',

@@ -90,13 +90,13 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       }
     },
     backgroundStandard: {
-      background: parameters.sapUiBaseBG
+      background: parameters.sapBackgroundColor
     },
     backgroundSolid: {
-      background: parameters.sapUiShellBackground
+      background: parameters.sapShell_Background
     },
     backgroundList: {
-      background: parameters.sapUiGroupContentBackground
+      background: parameters.sapGroup_ContentBackground
     },
     backgroundTransparent: {
       background: 'transparent'
@@ -120,10 +120,10 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
-      background: parameters.sapUiPageHeaderBackground,
+      background: parameters.sapPageHeader_Background,
       '& >*': {
-        background: parameters.sapUiPageHeaderBackground,
-        boxShadow: `inset 0 -0.0625rem ${parameters.sapUiPageHeaderBorderColor}`
+        background: parameters.sapPageHeader_Background,
+        boxShadow: `inset 0 -0.0625rem ${parameters.sapPageHeader_BorderColor}`
       }
     },
     contentSection: {
@@ -137,7 +137,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       // marginTop: '1px',
       // marginBottom: '1px',
       boxSizing: 'border-box'
-      // backgroundColor: parameters.sapUiBaseBG
+      // backgroundColor: parameters.sapBackgroundColor
     },
     pageWithHeader: {
       '& $contentSection': {
@@ -154,11 +154,11 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       bottom: '0',
       left: '0',
       width: '100%',
-      borderTop: `1px solid ${parameters.sapUiPageFooterBorderColor}`,
+      borderTop: `1px solid ${parameters.sapPageFooter_BorderColor}`,
       '& >*': {
         height: contentDensity === ContentDensity.Compact ? '2.5rem' : '2.75rem',
-        background: parameters.sapUiPageFooterBackground,
-        borderTop: `0.0625rem solid ${parameters.sapUiPageFooterBorderColor}`
+        background: parameters.sapPageFooter_Background,
+        borderTop: `0.0625rem solid ${parameters.sapPageFooter_BorderColor}`
       }
     }
   };

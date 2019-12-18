@@ -7,13 +7,13 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       paddingLeft: '2rem',
       paddingRight: '2rem',
       paddingBottom: '1px',
-      background: parameters.sapUiObjectHeaderBackground,
-      boxShadow: parameters.sapUiShadowHeader
+      background: parameters.sapObjectHeader_Background,
+      boxShadow: parameters.sapContent_HeaderShadow
     },
     filterBarHeader: {
       alignItems: 'center',
       display: 'flex',
-      background: parameters.sapUiObjectHeaderBackground,
+      background: parameters.sapObjectHeader_Background,
       minHeight: '3rem',
       paddingBottom: '0.5rem',
       boxShadow: 'none',
@@ -28,7 +28,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       flexWrap: 'wrap',
       paddingTop: '1rem',
       paddingBottom: '1rem',
-      background: parameters.sapUiObjectHeaderBackground,
+      background: parameters.sapObjectHeader_Background,
       transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in'
     },
     filterAreaClosed: {
@@ -49,8 +49,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     },
     // is being applied to the span which represents the InfoLabel Text
     label: {
-      fontSize: parameters.sapMFontSmallSize,
-      fontFamily: parameters.sapUiFontFamily,
+      fontSize: parameters.sapFontSmallSize,
+      fontFamily: parameters.sapFontFamily,
       lineHeight: '1.125rem',
       fontWeight: 600,
       letterSpacing: '0.0125rem',
@@ -60,7 +60,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
       display: 'inline-block',
-      color: parameters.sapUiBaseText
+      color: parameters.sapTextColor
     },
     // specific padding needed for purely numeric input
     numeric: {},

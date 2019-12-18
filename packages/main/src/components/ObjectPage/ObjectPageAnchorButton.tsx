@@ -31,18 +31,18 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
     }
   },
   button: {
-    color: parameters.sapUiContentLabelColor,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    color: parameters.sapContent_LabelColor,
+    fontFamily: parameters.sapFontFamily,
+    fontSize: parameters.sapFontSize,
     cursor: 'pointer'
   },
   selected: {
-    color: parameters.sapUiSelected,
+    color: parameters.sapSelectedColor,
     minWidth: '2rem',
     textAlign: 'center',
     '&:after': {
       content: '""',
-      borderBottom: `0.188rem solid ${parameters.sapUiSelected}`,
+      borderBottom: `0.188rem solid ${parameters.sapSelectedColor}`,
       width: '100%',
       position: 'absolute',
       bottom: 0,

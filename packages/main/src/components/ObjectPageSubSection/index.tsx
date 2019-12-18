@@ -17,13 +17,13 @@ const styles = ({ parameters }: JSSTheme) => ({
   objectPageSubSection: {
     padding: '1rem 0',
     '&:focus': {
-      outline: `1px dotted ${parameters.sapUiContentFocusColor}`,
+      outline: `1px dotted ${parameters.sapContent_FocusColor}`,
       outlineOffset: '-1px'
     }
   },
   objectPageSubSectionHeaderTitle: {
-    fontSize: parameters.sapMFontHeader5Size,
-    color: parameters.sapUiGroupTitleTextColor,
+    fontSize: parameters.sapFontHeader5Size,
+    color: parameters.sapGroup_TitleTextColor,
     marginBottom: '0.5rem'
   },
   subSectionContent: {

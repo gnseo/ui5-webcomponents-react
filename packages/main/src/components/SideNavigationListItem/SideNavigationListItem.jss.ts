@@ -3,9 +3,9 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
   listItem: {
     '&:active': {
-      '--sapUiBaseText': parameters.sapUiListActiveTextColor,
+      '--sapTextColor': parameters.sapList_Active_TextColor,
       '& $icon, & $expandArrow': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiListActiveTextColor
+        '--sapContent_NonInteractiveIconColor': parameters.sapList_Active_TextColor
       }
     }
   },
@@ -21,7 +21,7 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
   },
 
   icon: {
-    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
+    '--sapContent_NonInteractiveIconColor': parameters.sapContent_IconColor,
     width: '1.125rem',
     height: '1.125rem',
     padding: '0.9375rem',
@@ -31,7 +31,7 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
   text: {},
 
   expandArrow: {
-    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
+    '--sapContent_NonInteractiveIconColor': parameters.sapContent_IconColor,
     width: '0.875rem',
     height: '0.875rem',
     padding: '0.8125rem',
@@ -59,7 +59,7 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
     height: '0',
     borderStyle: 'solid',
     borderWidth: '0 0 6px 6px',
-    borderColor: `transparent transparent ${parameters.sapUiContentIconColor} transparent`,
+    borderColor: `transparent transparent ${parameters.sapContent_IconColor} transparent`,
     position: 'absolute',
     right: '0.125rem',
     bottom: '0.1875rem'
