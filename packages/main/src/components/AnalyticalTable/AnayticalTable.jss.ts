@@ -40,12 +40,17 @@ const styles = ({ parameters }: JSSTheme) => ({
     overflowX: 'auto',
     backgroundColor: parameters.sapList_Background
   },
+  alternateRowColor: {
+    '& $tr:nth-child(even)': {
+      backgroundColor: parameters.sapUiListHeaderBackground
+    }
+  },
   tr: {
     zIndex: 0,
     backgroundColor: parameters.sapList_Background,
     color: parameters.sapList_TextColor,
     '&[data-is-selected]': {
-      backgroundColor: parameters.sapList_SelectionBackgroundColor
+      backgroundColor: `${parameters.sapList_SelectionBackgroundColor} !important`
     },
     '&[data-is-selected]:hover': {
       backgroundColor: `${parameters.sapList_Hover_SelectionBackground} !important`

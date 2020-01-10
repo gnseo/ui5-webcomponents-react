@@ -11,6 +11,7 @@ import { ThemingParameters } from './lib/ThemingParameters';
 import * as spacing from './lib/spacing';
 import { StyleClassHelper } from './lib/StyleClassHelper';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from './lib/usePassThroughHtmlProps';
 import { deprecationNotice, getScrollBarWidth } from './lib/Utils';
 
 export {
@@ -26,5 +27,6 @@ export {
   HSLColor,
   ThemingParameters,
   createGenerateClassName,
-  useConsolidatedRef
+  useConsolidatedRef,
+  usePassThroughHtmlProps
 };

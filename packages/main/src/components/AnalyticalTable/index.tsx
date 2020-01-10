@@ -1,7 +1,9 @@
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, {
@@ -98,7 +100,7 @@ export interface TableProps extends CommonProps {
   sortable?: boolean;
   groupable?: boolean;
   groupBy?: string[];
-  selectable?: boolean;
+  selectionMode?: TableSelectionMode;
   columnOrder?: object[];
 
   // events
@@ -139,7 +141,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     renderExtension,
     loading,
     groupBy,
-    selectable,
+    selectionMode,
     onRowSelected,
     reactTableOptions,
     tableHooks,
@@ -195,6 +197,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       defaultColumn,
       getSubRows,
       stateReducer,
+      webComponentsReactProperties: {
+        selectionMode,
+        classes,
+        onRowSelected,
+        rowHeight,
+        onRowExpandChange,
+        isTreeTable
+      },
       ...reactTableOptions
     },
     useAbsoluteLayout,
@@ -205,18 +215,22 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useExpanded,
     useRowSelect,
     useResizeColumns,
-    useTableStyling(classes),
-    useTableHeaderGroupStyling(classes),
-    useTableHeaderStyling(classes),
-    useTableRowStyling(classes, selectable, onRowSelected),
-    useTableCellStyling(classes, rowHeight),
-    useToggleRowExpand(onRowExpandChange, isTreeTable),
+    useTableStyling,
+    useTableHeaderGroupStyling,
+    useTableHeaderStyling,
+    useTableRowStyling,
+    useTableCellStyling,
+    useToggleRowExpand,
     ...tableHooks
   );
 
   const updateTableSizes = useCallback(() => {
-    const visibleColumns = columns.filter(Boolean).filter(({ show }) => show ?? true);
-    const columnsWithFixedWidth = columns.filter(({ width }) => width ?? false).map(({ width }) => width);
+    const visibleColumns = columns.filter(Boolean).filter((item) => {
+      return (item.isVisible ?? true) && !tableState.hiddenColumns.includes(item.accessor);
+    });
+    const columnsWithFixedWidth = visibleColumns
+      .filter(({ width, minWidth }) => width ?? minWidth ?? false)
+      .map(({ width, minWidth }) => width ?? minWidth);
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
     if (visibleColumns.length > 0 && tableRef.current.clientWidth > 0) {
       setColumnWidth(
@@ -225,7 +239,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } else {
       setColumnWidth(150);
     }
-  }, []);
+  }, [tableRef.current, columns, tableState.hiddenColumns]);
 
   useEffect(() => {
     updateTableSizes();
@@ -296,8 +310,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     tableState.columnResizing
   );
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
+    <div className={className} style={style} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
@@ -338,7 +354,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
             {loading && data.length === 0 && (
               <TablePlaceholder
-                columns={columns.filter((col) => col.show ?? true).length}
+                columns={
+                  columns.filter((col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor))
+                    .length
+                }
                 rows={props.minRows}
                 style={noDataStyles}
                 rowHeight={internalRowHeight}
@@ -354,7 +373,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 rows={rows}
                 minRows={minRows}
                 columns={columns}
-                selectable={selectable}
+                selectionMode={selectionMode}
                 reactWindowRef={reactWindowRef}
                 isTreeTable={isTreeTable}
                 internalRowHeight={internalRowHeight}
@@ -380,7 +399,7 @@ AnalyticalTable.defaultProps = {
   sortable: true,
   filterable: false,
   groupable: false,
-  selectable: false,
+  selectionMode: TableSelectionMode.NONE,
   data: [],
   columns: [],
   title: null,

@@ -16,7 +16,7 @@
     "paths": {
       "@shared/*": ["shared/*"],
       "@ui5/webcomponents-react/*": ["node_modules/@ui5/webcomponents-react/src/*"],
-      "@ui5/webcomponents-react-base/third-party/*": ["node_modules/@ui5/webcomponents-react/third-party/*"],
+      "@ui5/webcomponents-react-base/third-party/*": ["node_modules/@ui5/webcomponents-react-base/third-party/*"],
       "@ui5/webcomponents-react-base/*": ["node_modules/@ui5/webcomponents-react-base/src/*"],
       "@ui5/webcomponents-react-charts/*": ["node_modules/@ui5/webcomponents-react-charts/src/*"]
     },
